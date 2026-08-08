@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(96, 165, 250, 0.24), transparent 20%),
+    radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.2), transparent 22%),
+    linear-gradient(180deg, #0a1423 0%, #08131c 30%, #060d15 100%);
+  color: #eef7ff;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 18%, transparent 82%, rgba(255,255,255,0.03));
+  pointer-events: none;
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, #6ec6ff 0%, #8fe0ff 30%, #ffffff 100%);
+  filter: saturate(1.2) contrast(1.06);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+#game-ui {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hud-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  pointer-events: auto;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.34);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hud-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(249, 115, 22, 0.42);
+}
+
+.menu-panel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(500px, 88vw);
+  padding: 28px 20px 20px;
+  border-radius: 28px;
+  background: rgba(10, 15, 26, 0.72);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.menu-panel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(37, 194, 255, 0.26), rgba(139, 92, 246, 0.32), rgba(245, 158, 11, 0.18));
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.8;
+}
+
+.brand {
+  font-size: 0.8rem;
+  letter-spacing: 0.38em;
+  font-weight: 800;
+  color: #8bd3ff;
+  opacity: 0.9;
+  text-shadow: 0 0 16px rgba(125, 211, 252, 0.6);
+}
+
+.menu-panel h1 {
+  margin: 12px 0 8px;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(99, 190, 255, 0.7);
+}
+
+.menu-panel p {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  min-width: 120px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #eaf6ff;
+  font-size: 0.95rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.stat-pill strong {
+  font-size: 1.2rem;
+  color: #fef3c7;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.35);
+}
+
+.controls-text {
+  font-size: 0.92rem;
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.menu-btn {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.03em;
+}
+
+.menu-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.menu-btn.primary {
+  background: linear-gradient(135deg, #25c2ff, #1db954);
+}
+
+.menu-btn.secondary {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+.menu-btn.accent {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+}
+
+.hidden {
+  display: none !important;
+}
